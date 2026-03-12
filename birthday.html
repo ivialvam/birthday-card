@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:url('asset/_NRA3993.jpg') center/cover no-repeat;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* CARD NORMAL */
+.card{
+    background:white;
+    width:350px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:fadeIn .5s ease;
+}
+
+/* SURAT */
+.letter-card{
+    width:420px;
+    max-width:90%;
+    background:#dff0c8;
+    padding:35px;
+    border-radius:16px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+    text-align:center;
+    animation:slideLetter 1s ease;
+}
+
+button{
+    background:#ff4fa3;
+    border:none;
+    padding:10px 20px;
+    border-radius:25px;
+    color:white;
+    margin-top:15px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.8;
+}
+
+.hidden{
+    display:none;
+}
+
+img{
+    width:150px;
+    margin-bottom:15px;
+}
+
+.typing{
+    border-right:2px solid black;
+    white-space:pre-line;
+    overflow:hidden;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes slideLetter{
+    from{
+        transform:translateY(80px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CARD 1 -->
+<div class="card" id="card1">
+    <img src="asset/birthday-birthday-party.gif">
+    <h2>Happy Birthday, MI BESTIIY</h2>
+    <p>*press the music button for a better experience*</p>
+    <p>ฅ^>⩊<^ ฅ</p><button onclick="toggleMusic()" id="musicBtn">▶</button>
+    
+    <button onclick="nextCard(2)">thanks phiiy</button>
+<audio id="bgMusic" loop>
+    <source src="asset/music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+
+<!-- CARD 2 -->x
+<div class="card hidden" id="card2">
+    <img src="asset/letter.jpg">
+    <h3>Do you wanna open it?</h3>
+    <button onclick="showLetter()">yes why not?</button>
+    <br>
+    <button onclick="showMeme()">NAHHHH YIKES</button>
+</div>
+
+<!-- CARD 3 -->
+<div class="card hidden" id="card3">
+    <img src="asset/puppy.png">
+    <h3>Aww 🥺</h3>
+    <p>PLS GIVE ME A CHANCEEEEE!!!</p>
+    <button onclick="nextCard(2)">yyyyy fine lahhh</button>
+</div>
+
+<!-- CARD 4 -->
+<div class="card letter-card hidden" id="card4">
+    <h2 id="typingTitle" class="typing"></h2>
+    <p id="typingText" class="typing"></p>
+
+    <button onclick="alert('okay byeee')">okay byeee</button>
+</div>
+
+<script>
+
+const titleText = "✦ Happy Birthday, NARA RIZKY ✦";
+const letterText = `I pray that good health, long life, and peace stay with you throughout your life.
+
+Wishing you all the best and many more birthdays to come. I hope your day is filled with lots of laughter, happiness, and good memories.
+
+You are one of the most important people in my life, and I'm really grateful to have a friend like you. Thank you for always being there.
+ 
+Cheers to your 25th! 🎉`;
+
+
+function nextCard(num){
+    document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
+    document.getElementById('card'+num).classList.remove('hidden');
+}
+
+function startExperience(){
+    const music = document.getElementById("bgMusic");
+    music.play();
+    nextCard(2);
+}
+
+function showMeme(){
+    nextCard(3);
+}
+
+function showLetter(){
+    nextCard(4);
+
+    setTimeout(()=>{
+        typeEffect();
+    },300);
+}
+
+function typeEffect(){
+
+    let i=0;
+    let j=0;
+
+    const title = document.getElementById("typingTitle");
+    const text = document.getElementById("typingText");
+
+    function typeTitle(){
+        if(i < titleText.length){
+            title.innerHTML += titleText.charAt(i);
+            i++;
+            setTimeout(typeTitle,50);
+        }else{
+            typeText();
+        }
+    }
+
+    function typeText(){
+        if(j < letterText.length){
+            text.innerHTML += letterText.charAt(j);
+            j++;
+            setTimeout(typeText,20);
+        }
+    }
+
+    typeTitle();
+}
+
+</script>
+
+</body>
+</html>
