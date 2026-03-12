@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open test.html",
-            "file": "d:\\ivi\\birthday-bestie\\birthday.html"
+            "file": "d:\\ivi\\project\\birthday-card\\birthday.html"
         }
     ]
 }
