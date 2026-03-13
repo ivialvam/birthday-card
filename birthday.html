@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Card</title>
+<title>🎁 a gift made for you 🎀</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -84,6 +85,18 @@ img{
         opacity:1;
     }
 }
+
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-600px);opacity:0;}
+}
+
 </style>
 </head>
 
@@ -96,7 +109,12 @@ img{
     <img src="asset/birthday-birthday-party.gif">
     <h2>Happy Birthday, MI BESTIIY</h2>
     <p>*press the music button for a better experience*</p>
-    <p>ฅ^>⩊<^ ฅ</p>
+    <p>⊹₊˚‧︵‿₊୨(˶>⩊<˶)୧₊‿︵‧˚₊⊹</p>
+    <p>🌊⋆｡𖦹 °.🐚⋆❀˖°🫧</p>
+
+    <div class="heart" style="left:20%">🎉</div>
+    <div class="heart" style="left:50%">🎂</div>
+    <div class="heart" style="left:80%">🎈</div>
 
     <button onclick="toggleMusic()" id="musicBtn">▶</button>
     <button onclick="nextCard(2)">thanks phiiy</button>
@@ -109,6 +127,7 @@ img{
 <div class="card hidden" id="card2">
     <img src="asset/letter.jpg">
     <h3>Do you wanna open it?</h3>
+    <p>,,︵୨(ㅇㅅㅇ)୧︵,,</p>
     <button onclick="showLetter()">yes why not?</button>
     <br>
     <button onclick="showMeme()">NAHHHH YIKES</button>
@@ -127,11 +146,15 @@ img{
     <h2 id="typingTitle" class="typing"></h2>
     <p id="typingText" class="typing"></p>
 
-    <button onclick="alert('okay byeee')">okay byeee</button>
+    <button onclick="alert('thankyou for reading<3')">okay byeee</button>
 </div>
+
+<p id="countdown"></p>
+
 
 <script>
 
+    
 const titleText = "✦ Happy Birthday, NARA RIZKY ✦";
 const letterText = `I pray that good health, long life, and peace stay with you throughout your life.
 
@@ -140,7 +163,6 @@ Wishing you all the best and many more birthdays to come. I hope your day is fil
 You are one of the most important people in my life, and I'm really grateful to have a person like you. Thank you for always being there.
 
 Cheers to your 25th! 🎉`;
-
 
 function nextCard(num){
     document.querySelectorAll('.card').forEach(c=>c.classList.add('hidden'));
@@ -213,7 +235,6 @@ function toggleMusic(){
         btn.innerHTML = "▶"; // icon play
     }
 }
-
 </script>
 
 </body>
