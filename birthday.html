@@ -87,6 +87,8 @@ img{
 </style>
 </head>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <body>
 
 <!-- CARD 1 -->
@@ -94,17 +96,16 @@ img{
     <img src="asset/birthday-birthday-party.gif">
     <h2>Happy Birthday, MI BESTIIY</h2>
     <p>*press the music button for a better experience*</p>
-    <p>ฅ^>⩊<^ ฅ</p><button onclick="toggleMusic()" id="musicBtn">▶</button>
-    
-    <button onclick="nextCard(2)">thanks phiiy</button>
-<audio id="bgMusic" loop>
-    <source src="asset/music.mp3" type="audio/mpeg">
-</audio>
+    <p>ฅ^>⩊<^ ฅ</p>
 
+    <button onclick="toggleMusic()" id="musicBtn">▶</button>
+    <button onclick="nextCard(2)">thanks phiiy</button>
+    <audio id="bgMusic" loop>
+        <source src="asset/hbd_piano.mp3" type="audio/mpeg">
+    </audio>
 </div>
 
-
-<!-- CARD 2 -->x
+<!-- CARD 2 -->
 <div class="card hidden" id="card2">
     <img src="asset/letter.jpg">
     <h3>Do you wanna open it?</h3>
@@ -136,8 +137,8 @@ const letterText = `I pray that good health, long life, and peace stay with you 
 
 Wishing you all the best and many more birthdays to come. I hope your day is filled with lots of laughter, happiness, and good memories.
 
-You are one of the most important people in my life, and I'm really grateful to have a friend like you. Thank you for always being there.
- 
+You are one of the most important people in my life, and I'm really grateful to have a person like you. Thank you for always being there.
+
 Cheers to your 25th! 🎉`;
 
 
@@ -161,6 +162,14 @@ function showLetter(){
 
     setTimeout(()=>{
         typeEffect();
+
+        // confetti effect
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+
     },300);
 }
 
@@ -189,8 +198,20 @@ function typeEffect(){
             setTimeout(typeText,20);
         }
     }
-
     typeTitle();
+}
+
+function toggleMusic(){
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    if(music.paused){
+        music.play();
+        btn.innerHTML = "⏸"; // icon pause
+    }else{
+        music.pause();
+        btn.innerHTML = "▶"; // icon play
+    }
 }
 
 </script>
